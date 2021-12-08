@@ -1,5 +1,5 @@
-﻿using BlogLab.AccountRepository;
-using BlogLab.Models.Account;
+﻿using BlogLab.Models.Account;
+using BlogLab.Repository;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;

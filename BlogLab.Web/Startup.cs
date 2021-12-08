@@ -1,13 +1,12 @@
+using BlogLab.Models.Account;
 using BlogLab.Models.Settings;
+using BlogLab.Repository;
+using BlogLab.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BlogLab.Web
 {
@@ -25,6 +24,22 @@ namespace BlogLab.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<CloudinaryOptions>(Configuration.GetSection("CloudinaryOptions"));
+
+
+            services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IPhotoService, PhotoService>();
+
+            services.AddScoped<IBlogRepository, BlogRepository>();
+            services.AddScoped<IBlogCommentRepository, BlogCommentRepository>();
+            services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddScoped<IPhotoRepository, PhotoRepository>();
+
+            services.AddIdentityCore<ApplicationUserIdentity>(opt =>
+            {
+                opt.Password.RequireNonAlphanumeric = false;
+            });
+
+
             services.AddRazorPages();
         }
 

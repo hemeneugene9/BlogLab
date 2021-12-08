@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlogLab.AccountRepository
+
+namespace BlogLab.Repository
 {
     public interface IBlogCommentRepository
     {

@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlogLab.AccountRepository
+namespace BlogLab.Repository
 {
     public class PhotoRepository : IPhotoRepository
     {
@@ -42,7 +42,7 @@ namespace BlogLab.AccountRepository
             {
                 await connection.OpenAsync();
                 photos = await connection.QueryAsync<Photo>(
-                    "Photo_GetByUserId", new { ApplicationUserId = applicationUserId}, commandType: CommandType.StoredProcedure);
+                    "Photo_GetByUserId", new { ApplicationUserId = applicationUserId }, commandType: CommandType.StoredProcedure);
             }
 
             return photos.ToList();
@@ -75,7 +75,7 @@ namespace BlogLab.AccountRepository
                 photoCreate.Description
                 );
 
-            int newPhotoId  ;
+            int newPhotoId;
 
             using (var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
             {

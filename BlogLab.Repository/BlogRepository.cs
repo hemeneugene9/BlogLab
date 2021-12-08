@@ -8,8 +8,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace BlogLab.AccountRepository
+namespace BlogLab.Repository
 {
     public class BlogRepository : IBlogRepository
     {
@@ -42,7 +41,7 @@ namespace BlogLab.AccountRepository
                 await connection.OpenAsync();
 
                 using (var multi = await connection.QueryMultipleAsync("Blog_All",
-                    new { Offset = (blogPaging.Page-1) * blogPaging.PageSize}, commandType: CommandType.StoredProcedure))
+                    new { Offset = (blogPaging.Page - 1) * blogPaging.PageSize }, commandType: CommandType.StoredProcedure))
                 {
                     result.Items = multi.Read<Blog>();
 
