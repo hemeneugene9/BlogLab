@@ -19,6 +19,6 @@ namespace BlogLab.Models.Blog
         [MaxLength(3000, ErrorMessage = "Must be at least 300-3000 characters")]
         public string Content { get; set; }
         
-        public int? PhoneId { get; set; }
+        public int? PhotoId { get; set; }
     }
 }
